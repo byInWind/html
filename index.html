@@ -6,9 +6,43 @@
 	<title>Document</title>
 </head>
 <body>
-	  <a class="jump"
-      href="weixin://dl/business/?appid=wx3840d7754a0b17ac&path=pages/product/goods&query=id%3D1508660113473499138%26goodsId%3D1508660113226035202
-">点我跳转到微信小程序</a>
+	<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<!-- <a class="jump"
+		href="weixin://dl/business/?appid=wx3840d7754a0b17ac&path=pages/tabbar/homepage/index">点我跳转到微信小程序</a> -->
+	<script>
+		window.onload = function () {
+			const queryString = location.search; // 这是你的查询字符串  
+			const urlParams = new URLSearchParams(queryString);
+			const id = urlParams.get('id'); // 获取id参数的值  
+			const goodId = urlParams.get('goodId')
+			const type = urlParams.get('type');
+			if (type == 'good') {
+				//商品详情页
+				let temp = `id=${id}&goodsId=${goodsId}`
+				let query = encodeURIComponent(temp);
+				let url = "weixin://dl/business/?appid=wx3840d7754a0b17ac&path=pages/product/goods&query=" + query
+				// this.url = url;
+				location.href = url
+			} else {
+				//首页
+				let url = "weixin://dl/business/?appid=wx3840d7754a0b17ac&path=pages/tabbar/homepage/index"
+				// this.url = url;
+				location.href = url
+			}
+		}
+	</script>
+</body>
+
+</html>
  
 	
 </body>
